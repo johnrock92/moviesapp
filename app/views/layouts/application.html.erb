@@ -13,13 +13,21 @@
 	DT354/3
 </div>
 
+
+
 <div id ="nav">
 	<ul>
 	  <li><%= link_to "Questions"%></li>
       <li><%= link_to "Movie News", 'http://oscar.go.com/nominees' %></li>
       <li><%= mail_to "mary.regan@dit.ie", "Contact us" %></li>	
       <li><%= link_to "Movies", movies_path%></li>
-    </ul>
+      <% if !signed_in? %>
+		<li><%= link_to "Sign In", signin_path %></li>		
+	<% else %>
+		<li>Signed in as <%= @current_user.name %></li>
+		<li><%= link_to "Sign Out", signout_path %></li>
+
+	<%end %>
 </div>
 
 <%= yield %>
